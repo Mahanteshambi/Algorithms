@@ -2,10 +2,10 @@ package com.algorithms.stack;
 
 import java.util.Stack;
 
-public class InfixToPrefix {
+public class InfixToPostfix {
 
 	public static void main(String[] args) {
-		InfixToPrefix obj = new InfixToPrefix();
+		InfixToPostfix obj = new InfixToPostfix();
 		String[] exps = { "a+b*(c^d-e)^(f+g*h)-i", "a*(b-c)", "a*b-c" };
 		for (String exp : exps) {
 			System.out.println(obj.infixToPostfix(exp));
