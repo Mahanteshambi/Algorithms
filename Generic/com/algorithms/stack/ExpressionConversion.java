@@ -12,7 +12,8 @@ public class ExpressionConversion {
 			System.out.println(prefix + " prefixToPostfix " + obj.convertPrefixToPostfix(prefix) + " PostfixToPrefix "
 					+ obj.convertPostfixToPrefix(obj.convertPrefixToPostfix(prefix)) + " PostfixToInFix "
 					+ obj.convertPostfixToInfix(obj.convertPrefixToPostfix(prefix)) + " infiToPostfix "
-					+ obj.convertInfixToPostfix(obj.convertPrefixToInfix(prefix)));
+					+ obj.convertInfixToPostfix(obj.convertPrefixToInfix(prefix) + " infixToPrefix ")
+					+ obj.infixToPrefix(obj.convertPrefixToInfix(prefix)));
 		}
 
 	}
@@ -133,14 +134,12 @@ public class ExpressionConversion {
 		for (int c = 0; c < str.length(); c++) {
 			if (str.charAt(c) == '(') {
 				str.setCharAt(c, ')');
-				c++;
 			} else if (str.charAt(c) == ')') {
 				str.setCharAt(c, '(');
-				c++;
 			}
 		}
-		String prefix = convertInfixToPostfix(str.toString());
-		str = new StringBuilder(prefix);
+		String postfix = convertInfixToPostfix(str.toString());
+		str = new StringBuilder(postfix);
 		return str.reverse().toString();
 	}
 
