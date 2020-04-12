@@ -1,4 +1,4 @@
-package com.algorithms.tree;
+package com.algorithms.tree.bst;
 
 public class BST_Pre_to_Post {
 

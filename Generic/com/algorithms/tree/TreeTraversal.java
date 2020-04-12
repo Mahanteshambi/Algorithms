@@ -2,6 +2,7 @@ package com.algorithms.tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class TreeTraversal {
 	Node root;
@@ -61,6 +62,51 @@ public class TreeTraversal {
 		}
 	}
 
+	private void reverseLevelOrderTraversal(Node root) {
+		if (root == null) {
+			return;
+		}
+		Queue<Node> queue = new LinkedList<TreeTraversal.Node>();
+		Stack<Node> stack = new Stack<TreeTraversal.Node>();
+		queue.add(root);
+		while (!queue.isEmpty()) {
+			Node temp = queue.poll();
+			stack.add(temp);
+			if (temp.right != null) {
+				queue.add(temp.right);
+			}
+			if (temp.left != null) {
+				queue.add(temp.left);
+			}
+
+		}
+		while (!stack.isEmpty()) {
+			System.out.print(stack.pop().key + "");
+		}
+	}
+
+	private void rightToLeftLevelOrderTraversal(Node root) {
+		if (root == null) {
+			return;
+		}
+		Queue<Node> queue = new LinkedList<TreeTraversal.Node>();
+		Stack<Node> stack = new Stack<TreeTraversal.Node>();
+		queue.add(root);
+		while (!queue.isEmpty()) {
+			Node temp = queue.poll();
+			stack.add(temp);
+			if (temp.left != null) {
+				queue.add(temp.left);
+			}
+			if (temp.right != null) {
+				queue.add(temp.right);
+			}
+		}
+		while (!stack.isEmpty()) {
+			System.out.print(stack.pop().key + "");
+		}
+	}
+
 	public static void main(String[] args) {
 		TreeTraversal tree = new TreeTraversal();
 		tree.root = tree.new Node(1);
@@ -68,6 +114,8 @@ public class TreeTraversal {
 		tree.root.right = tree.new Node(3);
 		tree.root.left.left = tree.new Node(4);
 		tree.root.left.right = tree.new Node(5);
+		tree.root.right.left = tree.new Node(6);
+		tree.root.right.right = tree.new Node(7);
 		System.out.println("Preorder: ");
 		tree.preOrderTraversal(tree.root);
 		System.out.println();
@@ -79,6 +127,12 @@ public class TreeTraversal {
 		System.out.println();
 		System.out.println("Level order: ");
 		tree.levelOrderTraversal(tree.root);
+		System.out.println();
+		System.out.println("Reverse Level order: ");
+		tree.reverseLevelOrderTraversal(tree.root);
+		System.out.println();
+		System.out.println("Reverse Level order: ");
+		tree.rightToLeftLevelOrderTraversal(tree.root);
 	}
 
 }
